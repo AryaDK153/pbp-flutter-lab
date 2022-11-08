@@ -49,6 +49,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String _title = 'Genap';
 
   void _incrementCounter() {
     setState(() {
@@ -58,7 +59,39 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      if (_counter%2==0) {
+        _title = 'Genap';
+      } else {
+        _title = 'Ganjil';
+      }
     });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      if (_counter > 0) {
+        _counter--;
+      }
+      if (_counter%2==0) {
+        _title = 'Genap';
+      } else {
+        _title = 'Ganjil';
+      }
+    });
+  }
+
+  Color _getColor() {
+
+    if (_counter%2==0) {
+      return Colors.red;
+    } else {
+      return Colors.blue;
+    }
   }
 
   @override
@@ -95,21 +128,42 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text (
+              _title,
+              style: TextStyle(
+                fontSize: 50,
+                color: _getColor(),
+              )
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: const TextStyle(
+                fontSize: 30,
+                color: Colors.grey,
+              ), // Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 30),
+        child: Row (
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: _decrementCounter,
+              tooltip: 'decrement',
+              child: const Icon(Icons.remove),
+            ), // This trailing comma makes auto-formatting nicer for build methods.
+            Expanded(child: Container()),
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
+            ), // This trailing comma makes auto-formatting nicer for build methods.
+          ],
+        )
+      )
     );
   }
 }
