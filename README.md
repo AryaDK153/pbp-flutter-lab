@@ -22,7 +22,7 @@ Widget text akan menerima masukan berupa string yang akan dimunculkan. Kemudian,
 ### FloatingActionButton
 Widget ini digunakan ketika ingin membuat tombol berbentuk lingkaran yang terlihat melayang (hovering/floating). Tombol dapat memiliki icon dan fungsi yang akan dijalankan ketika ditekan.
 
-### Padding
+### Padding dan Row
 Widget yang berguna untuk mengatur tata letak (jarak antar widget).
 
 ## Fungsi setState() dan Variabel yang Terdampak
