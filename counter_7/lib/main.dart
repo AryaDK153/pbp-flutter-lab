@@ -86,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Color _getColor() {
-
     if (_counter%2==0) {
       return Colors.red;
     } else {
@@ -135,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: _getColor(),
               )
             ),
-            Text(
+            Text (
               '$_counter',
               style: const TextStyle(
                 fontSize: 30,
@@ -152,13 +151,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             FloatingActionButton(
               onPressed: _decrementCounter,
-              tooltip: 'decrement',
+              // tooltip: 'Decrement',
               child: const Icon(Icons.remove),
             ), // This trailing comma makes auto-formatting nicer for build methods.
             Expanded(child: Container()),
             FloatingActionButton(
               onPressed: _incrementCounter,
-              tooltip: 'Increment',
+              // tooltip: 'Increment',
               child: const Icon(Icons.add),
             ), // This trailing comma makes auto-formatting nicer for build methods.
           ],
