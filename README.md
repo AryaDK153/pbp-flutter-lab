@@ -51,6 +51,7 @@ Untuk memulai program baru bernama counter_7 menggunakan flutter, cukup buka com
 
 untuk menjalankan program, pertama-tama, masuk ke directory program yang telah dibuat, lalu jalankan programnya sebagai berikut:
 > cd counter_7
+
 > flutter run
 
 2. Mengubah tampilan
