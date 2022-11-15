@@ -76,3 +76,54 @@ if (counter%2==0) { // ini akan mendeteksi counter genap
 ```
 
 Selain itu, pada widget Text yang digunakan untuk memunculkan "_title", diberikan TextStyle yang pada parameter color akan meminta warna dari fungsi yang akan mengembalikan warna merah jika counter genap dan biru jika counter ganjil.
+
+
+# Tugas 8
+
+## Perbedaan Navigator.push dan Navigator.pushReplacement
+Method push hanya menambahkan rute yang dituju ke atas tumpukan screen (stack), di mana halaman baru tampil di atas halaman sebelumnya. Biasanya setelah method ini digunakan, ditambahkan method pop untuk menutup halaman sebelumnya agar program tidak menjadi terlalu berat karena semakin banyak stack.
+Kinerja 2 method ini digabung ke dalam satu method, yaitu pushReplacement.
+
+## Widget yang Digunakan pada Tugas 8
+
+Selain yang digunakan pada tugas 7, berikut adalah widget-widget yang digunakan:
+
+### Column, Center, EdgeInsets, CrossAxisAlignment, SingleChildScrollView
+
+Membantu mengatur penampilan (tata letak).
+> Column untuk atur baris vertikal
+> Center untuk center alignment
+> EdgeInsets mirip dengan margin, membantu padding
+> CrossAxisAlignment membantu widget alignment dalam sebuah container (tidak harus widget "Container")
+> SingleChildScrollView membuat scrollable box, berguna jika terlalu banyak isian dalam form tugas ini.
+
+### Navigator
+
+Mengatur navigasi dalam bentuk "stack". Berguna untuk pindah-pindah halaman. Cara kerja akan dijelaskan di bagian [cara kerja navigator](#cara-kerja-navigator)
+
+### Form
+
+Sebuah pembungkus untuk mengelompokkan form
+
+### Icon
+
+## Flutter Events
+### onPressed
+### onTap
+### onSaved
+
+## Cara Kerja Navigator
+
+## Implementasi Checklist Tugas 8
+1. Menambahkan Drawer
+2. Menambahkan 3 Tombol Navigasi pada Drawer
+    * Counter
+    * Form
+    * Data
+3. Menambahkan Halaman Form
+    * String Judul Budget
+    * Integer Nominal Budget
+    * Dropdown Tipe Budget
+    * Tombol Simpan Budget
+4. Menambahkan Halaman Data
+    * Tampilkan Data-Data yang Telah Disimpan
