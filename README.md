@@ -2,6 +2,8 @@
 
 > Arya Daniswara Khairan - 2106702781
 
+[Tugas-7](#tugas-7) [Tugas-8](#tugas-8)
+
 
 # Tugas 7
 
