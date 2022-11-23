@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.counter_7">
    <application
         android:label="counter_7"
@@ -31,4 +31,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+     <!-- Required to fetch data from the Internet. -->
+     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

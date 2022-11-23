@@ -1,6 +1,7 @@
 import 'package:counter_7/main.dart';
 import 'package:counter_7/add_form.dart';
 import 'package:flutter/material.dart';
+import 'package:counter_7/page/mywatchlist_page.dart';
 
 class MyDataPage extends StatefulWidget {
   MyDataPage({super.key, this.counter=0, this.savedList=const []});
@@ -59,6 +60,19 @@ class _MyDataPageState extends State<MyDataPage> {
                 );
               },
             ),
+
+            // WatchList Tugas 9
+            ListTile(
+              title: const Text('My WatchList'),
+              onTap: () {
+                // Route menu ke halaman form
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyWatchListPage(counter: counter, savedList: savedList)),
+                );
+              },
+            ),
+
           ],
         ),
       ),
