@@ -2,10 +2,10 @@
 
 > Arya Daniswara Khairan - 2106702781
 
-[Tugas-7](#tugas-7) [Tugas-8](#tugas-8)
+[Tugas-7](#tugas-7) [Tugas-8](#tugas-8) [Tugas-9](#tugas-9)
 
 
-# Tugas 7
+# Tugas 7 || [Back](#repositori-tugas-flutter)
 
 ## Stateless dan Stateful Widget
 ### Stateless Widgets
@@ -80,7 +80,7 @@ if (counter%2==0) { // ini akan mendeteksi counter genap
 Selain itu, pada widget Text yang digunakan untuk memunculkan "_title", diberikan TextStyle yang pada parameter color akan meminta warna dari fungsi yang akan mengembalikan warna merah jika counter genap dan biru jika counter ganjil.
 
 
-# Tugas 8
+# Tugas 8 || [Back](#repositori-tugas-flutter)
 
 ## Perbedaan Navigator.push dan Navigator.pushReplacement
 Method push hanya menambahkan rute yang dituju ke atas tumpukan screen (stack), di mana halaman baru tampil di atas halaman sebelumnya. Biasanya setelah method ini digunakan, ditambahkan method pop untuk menutup halaman sebelumnya agar program tidak menjadi terlalu berat karena semakin banyak stack.
@@ -90,7 +90,7 @@ Kinerja 2 method ini digabung ke dalam satu method, yaitu pushReplacement.
 
 Selain yang digunakan pada tugas 7, berikut adalah widget-widget yang digunakan:
 
-### Column, Center, EdgeInsets, CrossAxisAlignment, SingleChildScrollView, Icon
+### Column, Center, EdgeInsets, CrossAxisAlignment, SingleChildScrollView, Icon, ListTile, TextButton
 
 Membantu mengatur penampilan.
 * Column
@@ -105,6 +105,10 @@ Membantu mengatur penampilan.
 > membuat scrollable box, berguna jika terlalu banyak isian dalam form tugas ini.
 * Icon
 > memunculkan ikon yang berguna untuk menginformasikan fungsi tombol tanpa perlu menambahkan teks label.
+* ListTile
+> pembungkus berbentuk area seperti ubin yang memenuhi suatu baris dan dapat menampung widget-widget lain
+* TextButton
+> memunculkan text yang dapat ditekan selayaknya suatu tombol
 
 ### Navigator
 
@@ -372,3 +376,48 @@ body: ListView(
     ],
 ),
 ```
+
+
+# Tugas 9 || [Back](#repositori-tugas-flutter)
+
+## Pengambilan Data JSON tanpa Membuat Model
+
+Bisa dilakukan, namun data yang diterima tetap harus diiterasi satu-persatu dan disimpan dalam bentuk list. Cara ini bisa jadi lebih baik daripada membuat model terlebih dahulu apabila data JSON yang diterima sudah pasti sesuai dan tidak memiliki banyak key-value. sehingga pemanggilan isi cukup dengan memanggil index elemen yang diinginkan.
+Namun jika JSON yang diterima lebih rumit, banyak key-value, bahkan memiliki submodel, lebih baik untuk membuat model terlebih dahulu.
+
+## Widget yang Digunakan pada Tugas 9
+
+Selain yang digunakan pada [tugas 7](#widget-yang-digunakan-pada-tugas-7) dan [tugas 8](#widget-yang-digunakan-pada-tugas-8), tidak ada widget baru yang digunakan pada tugas 9 kecuali FutureBuilder.
+
+FutureBuilder adalah pembungkus yang akan mulai menyusun data saat runtime. Data akan dikembalikan sebagai AsyncSnapshot yang mana dapat terus berubah selama JSON yang diambil terus berubah (isinya bertambah/berkurang, tapi masih sesuai model).
+
+## Mekanisme Pengambilan Data JSON
+
+Data diambil melalui URL dalam bentuk http response yang kemudian didecode menggunakan fungsi jsonDecode(). Hasilnya kemudian akan diiterasi menggunakan **for loop** untuk dibuat ke dalam parameter-parameter object **MyWatchList** yang kemudian disimpan ke dalam list object.
+
+Untuk memunculkan data di flutter, cukup memanggil parameter yang ingin dimunculkan.
+
+## Implementasi Checklist Tugas 9
+
+1. Tombol navigasi ke halaman mywatchlist
+> sama seperti pembuatan navigasi sebelum-sebelumnya, namun diarahkan ke MyWatchListPage().
+
+2. Model mywatchlist
+> Menggunakan [Quicktype](https://app.quicktype.io/), cukup copy-paste [kode JSON dari tugas 3](https://fistofadventure.herokuapp.com/mywatchlist/json/) ke area di bagian kiri halaman quicktype (ubah Source type ke bentuk JSON sebelumnya), berikan nama, lalu copy-paste model yang dibuat secara otomatis ke dalam file model yang diinginkan.
+
+3. Halaman mywatchlist dan navigasi judul
+> dengan data json yang diterima saat program dijalankan (pengambilan data klik di [sini](#mekanisme-pengambilan-data-json)), cukup lakukan pemanggilan berikut dalam widget Text():
+```
+"${snapshot.data![index].fields.title}",
+```
+>bungkus dengan ListTile, bungkus lagi dengan Card, susun letak dengan mengatur axis pada Column, dan bungkus lagi dengan Container. **Snapshot** merupakan AsyncSnapshot yang akan didapatkan dari FutureBuilder.
+
+>Dengan ListTile, teks judul dapat diberikan event handler. Dengan Navigator seperti yang digunakan pada drawer, ketika judul ditekan, data akan dipassing ke halaman Detail.
+
+4. Halaman Detail dan tombol kembali
+>setelah menerima data yang dipassing sebelumnya, dan memasukannya ke dalam variabel (kali ini digunakan variabel dengan tipe object Fields (dari model) bernama "data"), pemanggilan dapat dilakukan seperti:
+```
+data.title // judul
+data.watched // status
+```
+> dan seterusnya pada body halaman. Lalu, tinggal dilakukan penyusunan dengan Row dan Column. Di luar body, menggunakan persistentFooter diberikan tombol yang akan membawa pengguna kembali ke halaman mywatchlist.
